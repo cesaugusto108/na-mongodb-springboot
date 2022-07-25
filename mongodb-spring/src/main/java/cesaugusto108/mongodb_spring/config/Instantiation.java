@@ -1,7 +1,7 @@
-package cesaugusto108.mongodbspring.config;
+package cesaugusto108.mongodb_spring.config;
 
-import cesaugusto108.mongodbspring.domain.entities.User;
-import cesaugusto108.mongodbspring.repositories.UserRepository;
+import cesaugusto108.mongodb_spring.domain.entities.User;
+import cesaugusto108.mongodb_spring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

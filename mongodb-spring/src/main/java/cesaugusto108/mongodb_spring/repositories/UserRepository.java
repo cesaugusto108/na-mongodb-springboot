@@ -1,6 +1,6 @@
-package cesaugusto108.mongodbspring.repositories;
+package cesaugusto108.mongodb_spring.repositories;
 
-import cesaugusto108.mongodbspring.domain.entities.User;
+import cesaugusto108.mongodb_spring.domain.entities.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

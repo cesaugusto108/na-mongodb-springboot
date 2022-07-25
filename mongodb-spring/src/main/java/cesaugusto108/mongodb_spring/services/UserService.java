@@ -1,7 +1,7 @@
-package cesaugusto108.mongodbspring.services;
+package cesaugusto108.mongodb_spring.services;
 
-import cesaugusto108.mongodbspring.domain.entities.User;
-import cesaugusto108.mongodbspring.repositories.UserRepository;
+import cesaugusto108.mongodb_spring.domain.entities.User;
+import cesaugusto108.mongodb_spring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
