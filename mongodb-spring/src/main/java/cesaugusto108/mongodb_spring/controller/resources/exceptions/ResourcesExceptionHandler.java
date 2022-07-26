@@ -11,12 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ResourcesExceptionHandler {
     @ExceptionHandler(ObjectNotFoundException.class)
-    public ResponseEntity<StandardError> objectNotFoundException(ObjectNotFoundException objectNotFoundException,
-                                                                 HttpServletRequest httpServletRequest) {
+    public ResponseEntity<StandardError> notFoundException(
+            ObjectNotFoundException objectNotFoundException,
+            HttpServletRequest httpServletRequest
+    ) {
         HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
-        StandardError standardError = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Object not " +
-                "found.", objectNotFoundException.getMessage(), httpServletRequest.getRequestURI());
+        StandardError standardError = new StandardError(
+                System.currentTimeMillis(),
+                httpStatus.value(),
+                "Not found",
+                objectNotFoundException.getMessage(),
+                httpServletRequest.getRequestURI()
+        );
 
         return ResponseEntity.status(httpStatus).body(standardError);
     }
