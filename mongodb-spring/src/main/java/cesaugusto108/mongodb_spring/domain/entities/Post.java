@@ -1,5 +1,6 @@
 package cesaugusto108.mongodb_spring.domain.entities;
 
+import cesaugusto108.mongodb_spring.data_transfer_object.AuthorDataTransferObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 public class Post implements Serializable {
     private static final long serialVersionUID = 519845110710556723L;
 
-    private User author;
+    private AuthorDataTransferObject author;
 
     @Id
     private String id;
@@ -22,7 +23,7 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(User author, String id, Date date, String title, String body) {
+    public Post(AuthorDataTransferObject author, String id, Date date, String title, String body) {
         this.author = author;
         this.id = id;
         this.date = date;
@@ -30,11 +31,11 @@ public class Post implements Serializable {
         this.body = body;
     }
 
-    public User getAuthor() {
+    public AuthorDataTransferObject getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDataTransferObject author) {
         this.author = author;
     }
 

@@ -1,5 +1,6 @@
 package cesaugusto108.mongodb_spring.config;
 
+import cesaugusto108.mongodb_spring.data_transfer_object.AuthorDataTransferObject;
 import cesaugusto108.mongodb_spring.domain.entities.Post;
 import cesaugusto108.mongodb_spring.domain.entities.User;
 import cesaugusto108.mongodb_spring.repositories.PostRepository;
@@ -50,14 +51,14 @@ public class Instantiation implements CommandLineRunner {
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         Post post1 = new Post(
-                userList.get(0),
+                new AuthorDataTransferObject(userList.get(0)),
                 null,
                 simpleDateFormat.parse("22/05/2022"),
                 "Good morning",
                 "Top of the day to y'all"
         );
         Post post2 = new Post(
-                userList.get(0),
+                new AuthorDataTransferObject(userList.get(0)),
                 null,
                 simpleDateFormat.parse("22/05/2022"),
                 "See ya",
