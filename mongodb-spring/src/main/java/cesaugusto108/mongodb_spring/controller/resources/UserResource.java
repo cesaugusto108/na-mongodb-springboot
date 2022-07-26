@@ -1,6 +1,7 @@
 package cesaugusto108.mongodb_spring.controller.resources;
 
 import cesaugusto108.mongodb_spring.data_transfer_object.UserDataTransferObject;
+import cesaugusto108.mongodb_spring.domain.entities.Post;
 import cesaugusto108.mongodb_spring.domain.entities.User;
 import cesaugusto108.mongodb_spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,12 @@ public class UserResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPostsByUserId(@PathVariable String id) {
+        User user = userService.findById(id);
+
+        return ResponseEntity.ok().body(user.getPostList());
     }
 }
