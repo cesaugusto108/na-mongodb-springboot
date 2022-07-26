@@ -41,6 +41,18 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(
+            @PathVariable String id,
+            @RequestBody UserDataTransferObject userDataTransferObject
+    ) {
+        User user = userService.userFromDataTransferObject(userDataTransferObject);
+        user.setId(id);
+        user = userService.update(user);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody UserDataTransferObject userDataTransferObject) {
         User user = userService.userFromDataTransferObject(userDataTransferObject);
