@@ -34,6 +34,13 @@ public class UserResource {
         return ResponseEntity.ok().body(new UserDataTransferObject(user));
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        userService.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody UserDataTransferObject userDataTransferObject) {
         User user = userService.userFromDataTransferObject(userDataTransferObject);
