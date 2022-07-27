@@ -1,6 +1,7 @@
 package cesaugusto108.mongodb_spring.config;
 
 import cesaugusto108.mongodb_spring.data_transfer_object.AuthorDataTransferObject;
+import cesaugusto108.mongodb_spring.data_transfer_object.CommentDataTransferObject;
 import cesaugusto108.mongodb_spring.domain.entities.Post;
 import cesaugusto108.mongodb_spring.domain.entities.User;
 import cesaugusto108.mongodb_spring.repositories.PostRepository;
@@ -11,10 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -22,6 +20,8 @@ public class Instantiation implements CommandLineRunner {
     private UserRepository userRepository;
     @Autowired
     private PostRepository postRepository;
+
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
 
     @Override
     public void run(String... args) throws Exception {
@@ -47,7 +47,6 @@ public class Instantiation implements CommandLineRunner {
     private void instantiatePosts(List<User> userList) throws ParseException {
         postRepository.deleteAll();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         Post post1 = new Post(
@@ -64,6 +63,27 @@ public class Instantiation implements CommandLineRunner {
                 "See ya",
                 "Traveling abroad!"
         );
+
+        CommentDataTransferObject comment1 = new CommentDataTransferObject(
+                "Enjoy!",
+                simpleDateFormat.parse("22/05/2022"),
+                new AuthorDataTransferObject(userList.get(1))
+        );
+        CommentDataTransferObject comment2 = new CommentDataTransferObject(
+                "Have a nice trip!",
+                simpleDateFormat.parse("22/05/2022"),
+                new AuthorDataTransferObject(userList.get(2))
+        );
+        CommentDataTransferObject comment3 = new CommentDataTransferObject(
+                "Have a nice day!",
+                simpleDateFormat.parse("22/05/2022"),
+                new AuthorDataTransferObject(userList.get(1))
+        );
+
+        post1.getCommentDataTransferObjectList()
+                .addAll(Arrays.asList(comment3));
+        post2.getCommentDataTransferObjectList()
+                .addAll(Arrays.asList(comment1, comment2));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 

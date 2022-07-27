@@ -1,18 +1,21 @@
 package cesaugusto108.mongodb_spring.domain.entities;
 
 import cesaugusto108.mongodb_spring.data_transfer_object.AuthorDataTransferObject;
+import cesaugusto108.mongodb_spring.data_transfer_object.CommentDataTransferObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document
 public class Post implements Serializable {
     private static final long serialVersionUID = 519845110710556723L;
 
-    private AuthorDataTransferObject author;
+    private AuthorDataTransferObject authorDataTransferObject;
 
     @Id
     private String id;
@@ -20,23 +23,25 @@ public class Post implements Serializable {
     private String title;
     private String body;
 
+    private List<CommentDataTransferObject> commentDataTransferObjectList = new ArrayList<>();
+
     public Post() {
     }
 
-    public Post(AuthorDataTransferObject author, String id, Date date, String title, String body) {
-        this.author = author;
+    public Post(AuthorDataTransferObject authorDataTransferObject, String id, Date date, String title, String body) {
+        this.authorDataTransferObject = authorDataTransferObject;
         this.id = id;
         this.date = date;
         this.title = title;
         this.body = body;
     }
 
-    public AuthorDataTransferObject getAuthor() {
-        return author;
+    public AuthorDataTransferObject getAuthorDataTransferObject() {
+        return authorDataTransferObject;
     }
 
-    public void setAuthor(AuthorDataTransferObject author) {
-        this.author = author;
+    public void setAuthorDataTransferObject(AuthorDataTransferObject authorDataTransferObject) {
+        this.authorDataTransferObject = authorDataTransferObject;
     }
 
     public String getId() {
@@ -71,6 +76,10 @@ public class Post implements Serializable {
         this.body = body;
     }
 
+    public List<CommentDataTransferObject> getCommentDataTransferObjectList() {
+        return commentDataTransferObjectList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,5 +91,17 @@ public class Post implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "authorDataTransferObject=" + authorDataTransferObject +
+                ", id='" + id + '\'' +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                ", body='" + body + '\'' +
+                ", commentDataTransferObjectList=" + commentDataTransferObjectList +
+                '}';
     }
 }
