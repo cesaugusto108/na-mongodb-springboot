@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,11 @@ public class PostService {
 
     public List<Post> findByTitle(String text) {
         return postRepository.titleSearch(text);
+    }
+
+    public List<Post> search(String text, Date startDate, Date endDate) {
+        endDate = new Date(endDate.getTime() + 24 * 60 * 60 * 1000);
+
+        return postRepository.search(text, startDate, endDate);
     }
 }

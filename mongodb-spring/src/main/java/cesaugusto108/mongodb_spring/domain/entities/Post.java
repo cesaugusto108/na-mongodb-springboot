@@ -80,6 +80,10 @@ public class Post implements Serializable {
         return commentDataTransferObjectList;
     }
 
+    protected void setCommentDataTransferObjectList(List<CommentDataTransferObject> commentDataTransferObjectList) {
+        this.commentDataTransferObjectList = commentDataTransferObjectList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
