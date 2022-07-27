@@ -42,13 +42,4 @@ public class CommentDataTransferObject implements Serializable {
     public void setAuthorDataTransferObject(AuthorDataTransferObject authorDataTransferObject) {
         this.authorDataTransferObject = authorDataTransferObject;
     }
-
-    @Override
-    public String toString() {
-        return "CommentDataTransferObject{" +
-                "text='" + text + '\'' +
-                ", date=" + date +
-                ", authorDataTransferObject=" + authorDataTransferObject +
-                '}';
-    }
 }

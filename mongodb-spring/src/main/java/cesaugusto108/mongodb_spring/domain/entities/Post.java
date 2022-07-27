@@ -96,16 +96,4 @@ public class Post implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "authorDataTransferObject=" + authorDataTransferObject +
-                ", id='" + id + '\'' +
-                ", date=" + date +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                ", commentDataTransferObjectList=" + commentDataTransferObjectList +
-                '}';
-    }
 }

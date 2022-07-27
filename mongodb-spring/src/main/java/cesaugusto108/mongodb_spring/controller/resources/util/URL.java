@@ -1,6 +1,5 @@
 package cesaugusto108.mongodb_spring.controller.resources.util;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;

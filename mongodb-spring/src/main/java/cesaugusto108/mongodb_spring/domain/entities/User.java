@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String email;
 
     @DBRef(lazy = true)
-    private List<Post> postList = new ArrayList<>();
+    private final List<Post> postList = new ArrayList<>();
 
     public User() {
     }
@@ -69,15 +69,5 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", postList=" + postList +
-                '}';
     }
 }

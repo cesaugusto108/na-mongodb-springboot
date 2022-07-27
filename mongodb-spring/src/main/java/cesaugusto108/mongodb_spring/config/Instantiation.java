@@ -81,7 +81,7 @@ public class Instantiation implements CommandLineRunner {
         );
 
         post1.getCommentDataTransferObjectList()
-                .addAll(Arrays.asList(comment3));
+                .add(comment3);
         post2.getCommentDataTransferObjectList()
                 .addAll(Arrays.asList(comment1, comment2));
 
